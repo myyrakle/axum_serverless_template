@@ -37,18 +37,11 @@ jobs:
       - name: zip
         run: zip -j rust.zip ./target/x86_64-unknown-linux-musl/release/bootstrap
 
-      - uses: shallwefootball/s3-upload-action@master
+      - name: deploy
+        uses: appleboy/lambda-action@master
         with:
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: "myyrakle-public"
-          source_dir: '.'
-
-      # - name: deploy
-      #   uses: appleboy/lambda-action@master
-      #   with:
-      #     aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws_region: ap-northeast-2
-      #     function_name: 함수명!
-      #     zip_file: rust.zip
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ap-northeast-2
+          function_name: 함수명!
+          zip_file: rust.zip
