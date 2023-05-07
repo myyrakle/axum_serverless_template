@@ -10,3 +10,7 @@ lambda-web = { version = "0.2.1", features=["hyper"] }
 axum = { version = "0.6.7", features = ["multipart"] }
 tokio = { version = "1" }
 dotenv = "0.15.0"
+
+# 배포 전용 디펜던시
+[target.'cfg(unix)'.dependencies]
+openssl = { version = "0.10", features = ["vendored"] }
