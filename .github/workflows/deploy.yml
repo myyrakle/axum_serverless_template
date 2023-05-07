@@ -42,7 +42,7 @@ jobs:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: "myyrakle-public"
-          source_dir: 'rust.zip'
+          source_dir: '.'
 
       # - name: deploy
       #   uses: appleboy/lambda-action@master
